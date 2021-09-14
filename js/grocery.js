@@ -80,7 +80,7 @@ function addToCartList(id) {
         cartList.push(products.find(isId))
         console.log(cartList);
         // console.log(cartList.type);
-        // calculateSubtotals();
+        calculateSubtotals();
         // calculateTotal();
 }
 
@@ -92,41 +92,31 @@ function cleanCart() {
 // Exercise 3
 function calculateSubtotals() {
     // 1. Create a for loop on the "cartList" array 
-    // for(let product in cartList){
+        subtotal.grocery.value = 0;
+        subtotal.clothes.value = 0;
+        subtotal.beauty.value = 0;
+
         console.log(cartList.length)
      for(i = 0; i < cartList.length; i++){
-        
-    // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
-        // if(cartList[product].type === 'grocery'){
+        // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
         if(cartList[i].type === 'grocery'){
-           
-            // subtotal.grocery.value += cartList[product].price;
             subtotal.grocery.value += cartList[i].price;
             
-             console.log("subtotal", subtotal.grocery.value);
-            
-        // }else if(cartList[product].type === 'clothes'){
+             console.log("subtotalGrocery", subtotal.grocery.value);
+
         }else if(cartList[i].type === 'clothes'){
-            // subtotal.clothes.value += cartList[product].price;
             subtotal.clothes.value += cartList[i].price;
 
-            console.log(subtotal.clothes.value);
+            console.log("subtotalClothes", subtotal.clothes.value);
 
-        // }else if(cartList[product].type === 'beauty'){
         }else if(cartList[i].type === 'beauty'){
-            // subtotal.beauty.value += cartList[product].price;
             subtotal.beauty.value += cartList[i].price;
 
-            console.log(subtotal.beauty.value);
+            console.log("SubtotalBeauty", subtotal.beauty.value);
 
         }else{
             return
         }
-        // console.log(subtotal.grocery.value);
-        // console.log(subtotal.clothes.value);
-        // console.log(subtotal.beauty.value);
-
-
     }
 }
 
