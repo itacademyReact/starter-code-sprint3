@@ -81,7 +81,7 @@ function addToCartList(id) {
         console.log(cartList);
         // console.log(cartList.type);
         calculateSubtotals();
-        // calculateTotal();
+        calculateTotal();
 }
 
 // Exercise 2
@@ -112,7 +112,7 @@ function calculateSubtotals() {
         }else if(cartList[i].type === 'beauty'){
             subtotal.beauty.value += cartList[i].price;
 
-            console.log("SubtotalBeauty", subtotal.beauty.value);
+            console.log("subtotalBeauty", subtotal.beauty.value);
 
         }else{
             return
@@ -123,13 +123,15 @@ function calculateSubtotals() {
 // Exercise 4
 function calculateTotal() {
     // Calculate total price of the cart either using the "cartList" array
-    for(let product in cartList){
-        // const reducer = (accumulator, curr) => accumulator + curr;
-        // let productsPrice = []
-        // productsPrice.push(cartList[product].price);
-         total = /*cartList[product].price*///productsPrice.reduce(reducer);
-        console.log(total);
+    total = 0;
+    for(let productType in subtotal){
+        
+            total += Object.values(subtotal[productType]).reduce((t, n) => t + n);
+            console.log("productValue: ", subtotal[productType]);
+
     }
+    console.log("Total: ", total);
+
 }
 
 // Exercise 5
