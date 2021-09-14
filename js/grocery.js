@@ -79,6 +79,9 @@ function addToCartList(id) {
     // 2. Add found product to the cartList array
         cartList.push(products.find(isId))
         console.log(cartList);
+        // console.log(cartList.type);
+        // calculateSubtotals();
+        // calculateTotal();
 }
 
 // Exercise 2
@@ -89,24 +92,54 @@ function cleanCart() {
 // Exercise 3
 function calculateSubtotals() {
     // 1. Create a for loop on the "cartList" array 
-    for(i = 0; i < cartList.length; i++){
+    // for(let product in cartList){
+        console.log(cartList.length)
+     for(i = 0; i < cartList.length; i++){
         
     // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
-        if(cartList.products.type === 'grocery'){
-            subtotal.grocery.value++
-        }else if(cartList.products.type === 'clothes'){
-            subtotal.clothes.value++
-        }else if(cartList.products.type === 'beauty'){
-            subtotal.beauty.value++
+        // if(cartList[product].type === 'grocery'){
+        if(cartList[i].type === 'grocery'){
+           
+            // subtotal.grocery.value += cartList[product].price;
+            subtotal.grocery.value += cartList[i].price;
+            
+             console.log("subtotal", subtotal.grocery.value);
+            
+        // }else if(cartList[product].type === 'clothes'){
+        }else if(cartList[i].type === 'clothes'){
+            // subtotal.clothes.value += cartList[product].price;
+            subtotal.clothes.value += cartList[i].price;
+
+            console.log(subtotal.clothes.value);
+
+        // }else if(cartList[product].type === 'beauty'){
+        }else if(cartList[i].type === 'beauty'){
+            // subtotal.beauty.value += cartList[product].price;
+            subtotal.beauty.value += cartList[i].price;
+
+            console.log(subtotal.beauty.value);
+
         }else{
             return
         }
+        // console.log(subtotal.grocery.value);
+        // console.log(subtotal.clothes.value);
+        // console.log(subtotal.beauty.value);
+
+
     }
 }
 
 // Exercise 4
 function calculateTotal() {
     // Calculate total price of the cart either using the "cartList" array
+    for(let product in cartList){
+        // const reducer = (accumulator, curr) => accumulator + curr;
+        // let productsPrice = []
+        // productsPrice.push(cartList[product].price);
+         total = /*cartList[product].price*///productsPrice.reduce(reducer);
+        console.log(total);
+    }
 }
 
 // Exercise 5
