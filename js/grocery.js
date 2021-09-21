@@ -73,8 +73,9 @@ function addToCartList(id) {
         })
         function isId(prod) {
             return prod.prodId === id;
+            console.log();
           }
-        //console.log(products.find(isId));
+        console.log(products.find(isId));
 
     // 2. Add found product to the cartList array
         cartList.push(products.find(isId))
@@ -182,9 +183,11 @@ function generateCart() {
 
     const cartWithoutReps = {}
 
-    preCart.forEach((elem) => {cartWithoutReps[elem.quantity] = cartWithoutReps[elem.quantity] == null ?  1 : elem.quantity + 1;
-        })
-    
+    for(let i = 0; i < preCart.length; i++){
+    cartWithoutReps[preCart[i].quantity] = cartWithoutReps[preCart[i].quantity] == null ? preCart[i].quantity = 1 : preCart[i].quantity += 1;
+    // preCart.forEach((elem) => {cartWithoutReps[elem.quantity] = cartWithoutReps[elem.quantity] == null ? cartWithoutReps[elem.quantity] =  1 : elem.quantity += 1;
+    //     })
+    }
     cartSet = new Set(preCart);
     cart = [...cartSet]
 
