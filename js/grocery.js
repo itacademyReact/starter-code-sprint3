@@ -75,7 +75,7 @@ function addToCartList(id) {
             return prod.prodId === id;
             console.log();
           }
-        console.log(products.find(isId));
+        // console.log(products.find(isId));
 
     // 2. Add found product to the cartList array
         cartList.push(products.find(isId))
@@ -182,19 +182,24 @@ function generateCart() {
     let preCart = cartList.map((obj) => obj);
 
     const cartWithoutReps = {}
+    const quantity = 0;
 
     for(let i = 0; i < preCart.length; i++){
-    cartWithoutReps[preCart[i].quantity] = cartWithoutReps[preCart[i].quantity] == null ? preCart[i].quantity = 1 : preCart[i].quantity += 1;
-    // preCart.forEach((elem) => {cartWithoutReps[elem.quantity] = cartWithoutReps[elem.quantity] == null ? cartWithoutReps[elem.quantity] =  1 : elem.quantity += 1;
-    //     })
-    }
-    cartSet = new Set(preCart);
-    cart = [...cartSet]
 
-    console.log("cartWithoutReps: ", preCart);
+        cartWithoutReps[preCart[i].name] = cartWithoutReps[preCart[i].name] == null ? 1 : cartWithoutReps[preCart[i].name] + 1;
+        console.log("product quantiy", preCart[i].name, cartWithoutReps[preCart[i].name]);
+    }
+        // preCart.forEach((elem) => {cartWithoutReps[elem.quantity] = cartWithoutReps[elem.quantity] == null ? cartWithoutReps[elem.quantity] =  1 : elem.quantity += 1;
+    //     })
+    console.log("precart:", preCart);
+    cart = Object.keys(preCart).map(cartProperty => { return { ...cartProperty, "quantity": cartWithoutReps[cartProperty.name]}})
+    // cartSet = new Set(preCart);
+    // cart = [...cartSet]
+
+    // console.log("cartWithoutReps: ", preCart);
 
     console.log("Cart: ", cart);
-    console.log("CartList: ", cartList);
+    // console.log("CartList: ", cartList);
 }
     
 
