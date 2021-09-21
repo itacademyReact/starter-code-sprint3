@@ -182,10 +182,16 @@ function generateCart() {
 
     const cartWithoutReps = {}
 
-    for(let i = 0; i < preCart.length; i++){
-        cartWithoutReps[preCart[i].quantity] = cartWithoutReps[preCart[i].quantity] == null ? preCart[i].quantity = 1 : preCart[i].quantity += 1;
+    // for(let i = 0; i < preCart.length; i++){
+        // cartWithoutReps[preCart[i].quantity] = cartWithoutReps[preCart[i].quantity] == null ? preCart[i].quantity = 1 : preCart[i].quantity += 1;
+        // cartWithoutReps[preCart[i].quantity] = cartWithoutReps[preCart[i].quantity] == !null ? preCart[i].quantity += 1 : preCart[i].quantity = 1;
+
         // preCart[i].push(cartWithoutReps);
-    }
+        preCart.forEach((elem) => {cartWithoutReps[elem.quantity] = cartWithoutReps[elem.quantity] == null ?  1 : elem.quantity + 1;
+        })
+    
+    // }
+
 
     // const found = cart.some(item => cartList.includes(item));
     // let preCart = JSON.parse(JSON.stringify(cartList));
