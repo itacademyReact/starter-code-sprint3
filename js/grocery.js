@@ -179,27 +179,38 @@ function applyPromotionsSubtotals() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+            
+            //duplicamos el array de objetos "cartList" en una nueva variable para no modificar el array original ("cartList")
     let preCart = cartList.map((obj) => obj);
 
-    const cartWithoutReps = {}
-    const quantity = 0;
+            //creamos nueva variable objeto "quantity" para almacenar la nueva propiedad "quantity"
+    const quantityValue = {}
 
+            //creamos loop for para iterar dentro del array de "preCart" para ir asignando el nuevo valor de "quantity"
     for(let i = 0; i < preCart.length; i++){
 
-        cartWithoutReps[preCart[i].name] = cartWithoutReps[preCart[i].name] == null ? 1 : cartWithoutReps[preCart[i].name] + 1;
-        console.log("product quantiy", preCart[i].name, cartWithoutReps[preCart[i].name]);
+            //usamos un ternario ("condition ? exprIfTrue : exprIfFalse") para asignar a "quantity[preCart[i].name]"(que es  la "quantity"), 
+            //el valor "1" si no existe ningun valor ("quantity[preCart[i].name] == null ? 1"), o bien actualizar el valor sumando "+1" (": quantity[preCart[i].name] + 1;")
+            //en caso de encontrar un valor
+            quantityValue[preCart[i].name] = quantityValue[preCart[i].name] == null ? 1 : quantityValue[preCart[i].name] + 1;
+            // console.log("product quantiy", preCart[i].name, quantityValue[preCart[i].name]);
     }
-        // preCart.forEach((elem) => {cartWithoutReps[elem.quantity] = cartWithoutReps[elem.quantity] == null ? cartWithoutReps[elem.quantity] =  1 : elem.quantity += 1;
-    //     })
-    console.log("precart:", preCart);
-    cart = Object.keys(preCart).map(cartProperty => { return { ...cartProperty, "quantity": cartWithoutReps[cartProperty.name]}})
-    // cartSet = new Set(preCart);
-    // cart = [...cartSet]
+            //combinamos el uso de "Object.keys(quantity)" para acceder al nombre de las propiedades de "quantity", 
+            //junto con el ".map(productName => { return { ...preCart.find(obj => obj.name === productName), "quantity": quantity[productName]}})",
+            //para crear una copia del array "preCart" ("return { ...preCart"), concretamente del objeto que nos llega de la función onClick ("preCart.find(obj => obj.name === productName)"),
+            //eso lo conseguimos con el ".find()", asimilamos el objeto dentro del array ("obj => ") y lo encontramos mediante el nombre del objeto ("obj.name === productName")
+            //finalmente le añadimos la propiedad nueva "quantity": a la que asignamos el valor obtenido anteriormente en el loop (""quantity": quantityValue[productName]")
+    cart = Object.keys(quantityValue).map(productName => { return { ...preCart.find(obj => obj.name === productName), "quantity": quantityValue[productName]}})
 
+            //añadimos el subtotal(precio) del producto
+    for(let i = 0; i < cart.length; i++){
+        cart[i].subtotal = cart[i].quantity * cart[i].price;
+    }
+            //console.logs para pruebas
     // console.log("cartWithoutReps: ", preCart);
-
     console.log("Cart: ", cart);
     // console.log("CartList: ", cartList);
+
 }
     
 
@@ -207,7 +218,6 @@ function generateCart() {
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
 }
-
 // Exercise 8
 function addToCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
