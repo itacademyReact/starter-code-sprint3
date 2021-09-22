@@ -211,12 +211,28 @@ function generateCart() {
     console.log("Cart: ", cart);
     // console.log("CartList: ", cartList);
 
+    applyPromotionsCart();
+
 }
     
 
 // Exercise 7
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    cart.forEach((cartProd) => {
+        if(cartProd.subtotalWithDiscount === null){
+            cartProd.subtotalWithDiscount = 0;
+        }else if(cartProd.name === 'cooking oil' && cartProd.quantity > 3){
+            cartProd.subtotalWithDiscount = cartProd.quantity * 10;
+        }else if(cartProd.name === 'Instant cupcake mixture' && cartProd.quantity >= 10){
+            cartProd.subtotalWithDiscount = cartProd.quantity * cartProd.price * 2/3
+        }else{
+            cartProd.subtotalWithDiscount = cartProd.quantity * cartProd.price
+        }
+    })
+    console.log("cartWithDiscount: ", cart);
+
+
 }
 // Exercise 8
 function addToCart(id) {
