@@ -73,7 +73,6 @@ function addToCartList(id) {
         })
         function isId(prod) {
             return prod.prodId === id;
-            console.log();
           }
         // console.log(products.find(isId));
 
@@ -85,6 +84,7 @@ function addToCartList(id) {
         calculateTotal();
         applyPromotionsSubtotals();
         generateCart();
+        applyPromotionsCart()
 }
 
 // Exercise 2
@@ -95,6 +95,7 @@ function cleanCart() {
 // Exercise 3
 function calculateSubtotals() {
     // 1. Create a for loop on the "cartList" array 
+
         subtotal.grocery.value = 0;
         subtotal.clothes.value = 0;
         subtotal.beauty.value = 0;
@@ -142,6 +143,7 @@ function calculateTotal() {
 
 // Exercise 5
 function applyPromotionsSubtotals() {
+
     subtotal.grocery.discount= 0;
     subtotal.clothes.discount = 0;
     subtotal.beauty.discount = 0;
@@ -179,7 +181,8 @@ function applyPromotionsSubtotals() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-            
+
+    console.log("cartList", cartList);
             //duplicamos el array de objetos "cartList" en una nueva variable para no modificar el array original ("cartList")
     let preCart = cartList.map((obj) => obj);
 
@@ -237,7 +240,66 @@ function applyPromotionsCart() {
 // Exercise 8
 function addToCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+            //creamos un loop "forEach" -> "products.forEach((product, i) => {..}" para añadir una propiedad que haga las veces de id("prodId") 
+            //a todos nuestros objetos en el array "products", que asimilamos a su número de "index" (que empieza en 0 en vez de 1) al "(id)" que nos llega al pulsar el button
+            // -> product.prodId = i + 1;
+    products.forEach((product, i) => {
+        product.prodId = i + 1;    
+    })
+            //iniciamos un loop "for" para recorrer el array "products", tomar el producto necesario
+    for(i = 0; i < products.length; i++){
+            //iniciamos condicional "if" para comprobar si el objeto sobre el que se está iterando el loop ("if(products[i].prodId === id..") coincide con el id del producto seleccionado,
+            //y ("&&")(deben cumplirse ambas condiciones), 
+            //existe en nuestro array "cart" -> "cart.find(cartObj => {return cartObj.name === products[i].name}) !== products[i])". "obj.find" devuelve 1er obj que cumpla la condición,
+            //"cartObj => {return cartObj.name === products[i].name}" usando el ".name" busca un objeto en "cart" que coincida ("===") con el obj iterado ("products[i].name")
+        if(products[i].prodId === id && cart.find(cartObj => {return cartObj.name === products[i].name}) !== products[i]){
+            //cumplida la condicion anterior (el producto no existe en nuestro array "cart"), pusheamos el nuevo objeto a "cart" ("cart.push(products[i]);")
+            //pusheado el obj, accedemos al obj en "cart" ("cart.find(cartObj => {return cartObj.name === products[i].name})"), añadimos la propiedad (".quantity = 1;"),  
+            cart.push(products[i]);
+            const cartQuantity = cart.find(cartObj => {return cartObj.name === products[i].name}).quantity = 1;
+            const cartPrice = cart.find(cartObj => {return cartObj.name === products[i].name}).price
+            cart.find(cartObj => {return cartObj.name === products[i].name}).subtotal = cartQuantity * cartPrice;
+
+            //como en la condición anterior, pero en este caso si encuentra una coincidencia entre obj en "cart" y el obj recibido por "id"  ("=== products[i]" en vez de "!== products[i]")
+        }else if(products[i].prodId === id && cart.find(cartObj => {return cartObj.name === products[i].name}) === products[i]){
+            //en este caso el obj de "cart" que coincide (" cart.find(cartObj => {return cartObj.name === products[i].name})") y le actualizamos la "quantity" (".quantity += 1;"),
+            //y guardaamos el resultado en "const cartQuantity"
+            //también guardamos el obj modificado y algunas de sus proiedades ("const cartPrice = cart.find(..)") para trabajar más facilmente con esos valores.
+            const objCart = cart.find(cartObj => {return cartObj.name === products[i].name});
+            let cartQuantity = cart.find(cartObj => {return cartObj.name === products[i].name}).quantity  += 1;
+            const cartPrice = cart.find(cartObj => {return cartObj.name === products[i].name}).price;
+            const cartName = cart.find(cartObj => {return cartObj.name === products[i].name}).name;
+            //usamos las vars creadas anteriormente para calcular con facilidad la propiedad ".subtotal" ("= cartQuantity * cartPrice;") y la añadimos al obj que estamos actualizando en "cart"
+            let cartSubttl = cart.find(cartObj => {return cartObj.name === products[i].name}).subtotal = cartQuantity * cartPrice;
+            //creamos los condicionales necesarios ("if(cartName === 'cooking oil' && cartQuantity > 3)") ("else if(cartName === 'Instant cupcake mixture' && cartQuantity >= 10)")
+            //ayudandonos de las variables creadas para comprovar los requerimientos de producto y quantity de éste para aplicar o no el precio con descuento
+            if(cartName === 'cooking oil' && cartQuantity > 3){
+                objCart.subtotalWithDiscount = cartQuantity * 10;
+            }else if(cartName === 'Instant cupcake mixture' && cartQuantity >= 10){
+                objCart.subtotalWithDiscount = cartQuantity * cartPrice * 2 / 3;
+            }else{
+                objCart.subtotalWithDiscount = cartSubttl;
+            }
+        }
+    }
+    console.log("cart: ", cart);
+
+// 2. Add found product to the cartList array
+    //   if(cart.find(isId) == null){
+    //     cart.push(products.find(isId))
+    //     products.find(isId)[quantity] = 1
+    //   }else{
+    //     products.find(isId)[quantity] += 1
+    //   }
+    // cart = cart.find(isId) == null ? cart.push(products.find(isId)) : cart.find(isId).quantity + 1
+    // cart.push(products.find(isId))
+    // console.log(cartList);
+    // console.log(cartList.type);
+    // calculateSubtotals();
+    // calculateTotal();
+    // applyPromotionsSubtotals();
+    // generateCart();
+    // applyPromotionsCart()
 }
 
 // Exercise 9
