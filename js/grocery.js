@@ -253,6 +253,8 @@ function addToCart(id) {
             //existe en nuestro array "cart" -> "cart.find(cartObj => {return cartObj.name === products[i].name}) !== products[i])". "obj.find" devuelve 1er obj que cumpla la condición,
             //"cartObj => {return cartObj.name === products[i].name}" usando el ".name" busca un objeto en "cart" que coincida ("===") con el obj iterado ("products[i].name")
         if(products[i].prodId === id && cart.find(cartObj => {return cartObj.name === products[i].name}) !== products[i]){
+    // 2. Add found product to the cartList array
+
             //cumplida la condicion anterior (el producto no existe en nuestro array "cart"), pusheamos el nuevo objeto a "cart" ("cart.push(products[i]);")
             //pusheado el obj, accedemos al obj en "cart" ("cart.find(cartObj => {return cartObj.name === products[i].name})"), añadimos la propiedad (".quantity = 1;"),  
             cart.push(products[i]);
@@ -266,7 +268,7 @@ function addToCart(id) {
             //y guardaamos el resultado en "const cartQuantity"
             //también guardamos el obj modificado y algunas de sus proiedades ("const cartPrice = cart.find(..)") para trabajar más facilmente con esos valores.
             const objCart = cart.find(cartObj => {return cartObj.name === products[i].name});
-            let cartQuantity = cart.find(cartObj => {return cartObj.name === products[i].name}).quantity  += 1;
+            cartQuantity = cart.find(cartObj => {return cartObj.name === products[i].name}).quantity  += 1;
             const cartPrice = cart.find(cartObj => {return cartObj.name === products[i].name}).price;
             const cartName = cart.find(cartObj => {return cartObj.name === products[i].name}).name;
             //usamos las vars creadas anteriormente para calcular con facilidad la propiedad ".subtotal" ("= cartQuantity * cartPrice;") y la añadimos al obj que estamos actualizando en "cart"
@@ -284,22 +286,6 @@ function addToCart(id) {
     }
     console.log("cart: ", cart);
 
-// 2. Add found product to the cartList array
-    //   if(cart.find(isId) == null){
-    //     cart.push(products.find(isId))
-    //     products.find(isId)[quantity] = 1
-    //   }else{
-    //     products.find(isId)[quantity] += 1
-    //   }
-    // cart = cart.find(isId) == null ? cart.push(products.find(isId)) : cart.find(isId).quantity + 1
-    // cart.push(products.find(isId))
-    // console.log(cartList);
-    // console.log(cartList.type);
-    // calculateSubtotals();
-    // calculateTotal();
-    // applyPromotionsSubtotals();
-    // generateCart();
-    // applyPromotionsCart()
 }
 
 // Exercise 9
