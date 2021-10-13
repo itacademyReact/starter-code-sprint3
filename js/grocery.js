@@ -182,7 +182,7 @@ function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
-    console.log("cartList", cartList);
+    // console.log("cartList", cartList);
             //duplicamos el array de objetos "cartList" en una nueva variable para no modificar el array original ("cartList")
     let preCart = cartList.map((obj) => obj);
 
@@ -211,7 +211,7 @@ function generateCart() {
     }
             //console.logs para pruebas
     // console.log("cartWithoutReps: ", preCart);
-    console.log("Cart: ", cart);
+    // console.log("Cart: ", cart);
     // console.log("CartList: ", cartList);
 
     applyPromotionsCart();
@@ -233,12 +233,13 @@ function applyPromotionsCart() {
             cartProd.subtotalWithDiscount = cartProd.quantity * cartProd.price
         }
     })
-    console.log("cartWithDiscount: ", cart);
+    // console.log("cartWithDiscount: ", cart);
 
 
 }
 // Exercise 8
 function addToCart(id) {
+    addToCartList(id)
     // 1. Loop for to the array products to get the item to add to cart
             //creamos un loop "forEach" -> "products.forEach((product, i) => {..}" para añadir una propiedad que haga las veces de id("prodId") 
             //a todos nuestros objetos en el array "products", que asimilamos a su número de "index" (que empieza en 0 en vez de 1) al "(id)" que nos llega al pulsar el button
@@ -284,7 +285,7 @@ function addToCart(id) {
             }
         }
     }
-    console.log("cart: ", cart);
+    //console.log("cart: ", cart);
 
 }
 
