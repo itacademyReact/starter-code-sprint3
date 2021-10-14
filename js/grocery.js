@@ -102,17 +102,17 @@ function calculateSubtotals() {
 
      for(i = 0; i < cartList.length; i++){
         // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
-        if(cartList[i].type === 'grocery'){
+        if(cartList[i]["type"] === 'grocery'){
             subtotal.grocery.value += cartList[i].price;
             
             //  console.log("subtotalGrocery", subtotal.grocery.value);
 
-        }else if(cartList[i].type === 'clothes'){
+        }else if(cartList[i]["type"] === 'clothes'){
             subtotal.clothes.value += cartList[i].price;
 
             // console.log("subtotalClothes", subtotal.clothes.value);
 
-        }else if(cartList[i].type === 'beauty'){
+        }else if(cartList[i]["type"] === 'beauty'){
             subtotal.beauty.value += cartList[i].price;
 
             // console.log("subtotalBeauty", subtotal.beauty.value);
@@ -121,9 +121,9 @@ function calculateSubtotals() {
             return
         }
     }
-    // console.log("subtotalGrocery", subtotal.grocery.value);
-    // console.log("subtotalClothes", subtotal.clothes.value);
-    // console.log("subtotalBeauty", subtotal.beauty.value);
+    console.log("subtotalGrocery", subtotal.grocery.value);
+    console.log("subtotalClothes", subtotal.clothes.value);
+    console.log("subtotalBeauty", subtotal.beauty.value);
 
 }
 
