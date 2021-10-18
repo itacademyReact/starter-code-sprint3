@@ -31,21 +31,21 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link text-white btn" id="cart" type="button" data-toggle="modal"
-            data-target="#cartModal" onclick="cart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
+            data-target="#cartModal" onclick="printCart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
             My Cart</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <h1 class="text-center mt-3 m-5">Welcome to the ShopNow</h1>
+  <h1 class="text-center mt-3 p-5 welcome mb-3">Welcome to the ShopNow</h1>
 
   <!-- Grocery part -->
-  <section>
-    <h2 class="text-center"><i class="fas fa-shopping-basket mr-2"></i>Grocery</h2>
-    <div id="grocery" class="row ml-3 m-5">
+  <section class="section-grocery mb-3">
+    <h2 class="text-center py-3 text-light"><i class="fas fa-shopping-basket mr-2"></i>Grocery</h2>
+    <div id="grocery" class="row w-100 p-5 d-flex justify-content-center">
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">cooking oil</h5>
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Pasta</h5>
@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Instant cupcake mixture</h5>
@@ -75,11 +75,11 @@
   </section>
 
   <!-- beauty part -->
-  <section>
-    <h2 class="text-center"><i class="fas fa-heart mr-2"></i>Beauty</h2>
-    <div id="beauty" class="row ml-3 m-5">
+  <section class="section-beauty mb-3">
+    <h2 class="text-center py-3 text-light"><i class="fas fa-heart mr-2"></i>Beauty</h2>
+    <div id="beauty" class="row w-100 p-5 d-flex justify-content-center">
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">All-in-1</h5>
@@ -88,7 +88,7 @@
         </div>
       </div>
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Zero makeup kit</h5>
@@ -97,7 +97,7 @@
         </div>
       </div>
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Lip tints</h5>
@@ -109,11 +109,11 @@
   </section>
 
   <!-- clothes part -->
-  <section>
-    <h2 class="text-center"><i class="fas fa-tshirt mr-2"></i>Clothes</h2>
-    <div id="clothes" class="row ml-3 m-5">
+  <section class="section-clothes mb-3">
+    <h2 class="text-center py-3 text-light"><i class="fas fa-tshirt mr-2"></i>Clothes</h2>
+    <div id="clothes" class="row w-100 p-5 d-flex justify-content-center">
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Lawn dress</h5>
@@ -122,7 +122,7 @@
         </div>
       </div>
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Lawn-chiffon combo</h5>
@@ -131,7 +131,7 @@
         </div>
       </div>
 
-      <div class="card col-sm-3 m-1 ml-5 p-4" style="width: 18rem;">
+      <div class="card col-md-3 m-1 ml-5 p-4" style="width: 18rem;">
         <img src="./images/product.svg" class="grocery-img">
         <div class="card-body text-center">
           <h5 class="card-title">Toddler Frock</h5>
@@ -158,9 +158,10 @@
           <div class="modal-body">
             <!-- listing items starts -->
             <div>
-              <ul class="list">
-
+              <ul class="list row p-2 d-flex justify-content-center">
+                
               </ul>
+              <span class="total"></span>
               <div>
                 <h3 class="text-center bill px-5">Select Something</h3>
               </div>

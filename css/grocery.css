@@ -24,3 +24,29 @@ body{
     right: 0;
     margin-right: 1rem;
 }
+
+ul.list {
+    list-style: none;
+}
+
+h1.welcome {
+    background: rgba(182, 132, 197, 0.671);
+}
+
+.section-grocery {
+    background-image: url('../images/grocery.jpeg');
+}
+.section-clothes {
+    background-image: url('../images/clothes.jpeg');
+}
+.section-beauty {
+    background-image: url('../images/beauty.jpeg');
+}
+
+.section-grocery h2, .section-clothes h2, .section-beauty h2 {
+    background: rgba(91, 57, 104, 0.7);
+}
+
+.card {
+    background: rgba(86, 117, 151, 0.9);
+}

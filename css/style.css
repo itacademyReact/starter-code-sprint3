@@ -2,3 +2,28 @@
 body{
     font-family: Poppins;
 }
+
+header {
+    background-image: url('../images/food-shop.jpeg');
+}
+
+header h3 {
+    background: rgba(86, 117, 151, 0.671);
+}
+
+.container-grocery {
+    background-image: url('../images/grocery.jpeg');
+}
+.container-clothes {
+    background-image: url('../images/clothes.jpeg');
+}
+.container-beauty {
+    background-image: url('../images/beauty.jpeg');
+}
+
+.container-category {
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
