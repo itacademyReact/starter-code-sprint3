@@ -5,4 +5,27 @@ body {
 }
 #errorPassword, #errorName, #errorPhone {
     display: none;
+    color: crimson;
+
+} 
+.error{
+    color: crimson;
+}
+.valid{
+    display: none;
+
+}
+.invalid{
+    display: block;
+    color: crimson;
+
+}
+.inputErr {
+    color: #ff0000;
+    border: 5px solid crimson;
+
+}
+
+.inputVal{
+    border: 5px solid #05c535;
 }
