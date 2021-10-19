@@ -3,6 +3,27 @@
 body {
     font-family: Poppins;
 }
-#errorPassword, #errorName, #errorPhone {
+#errorPassword, #errorName, #errorPhone, #errorLastName, #errorAddress, #errorEmail {
     display: none;
+}
+
+.display-error-message {
+    color: red;
+    display: block !important;
+}
+
+.icons {
+    background: rgba(86, 117, 151, 0.671);
+}
+
+.icons .item h2 {
+    background: white;
+}
+
+.form .form-card {
+    background: rgba(91, 57, 104, 0.7);
+}
+
+.card-selected {
+    background: rgba(86, 117, 151, 0.5);
 }
