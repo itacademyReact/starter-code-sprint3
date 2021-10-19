@@ -18,9 +18,9 @@ var errorEmail = document.getElementById('errorEmail');
 function validate() {
     // Validate fields entered by the user: name, phone, password, and email
     this.validateField(this.password, this.errorPassword, 'password');
-    this.validateField(this.phone, this.errorPhone, 'onlyNumbers');
-    this.validateField(this.firstName, this.errorName, 'onlyCharts');
-    this.validateField(this.lastName, this.errorLastName, 'onlyCharts');
+    this.validateField(this.phone, this.errorPhone, 'phone');
+    this.validateField(this.firstName, this.errorName, 'name');
+    this.validateField(this.lastName, this.errorLastName, 'name');
     this.validateField(this.email, this.errorEmail, 'email');
     this.validateField(this.address, this.errorAddress);
 }
@@ -38,35 +38,30 @@ function validateField(fild, fildMessage, typeExtraValidate) {
         fildMessage.classList = [];
         fild.style.border = 'none';
     }
-    if (fild.value && typeExtraValidate === 'onlyNumbers') {
-        if (!parseInt(fild.value)) {
+    if (fild.value && typeExtraValidate === 'phone') {
+        let expression = /^\d{9}$/;
+        if (!expression.test(fild.value)) {
             isInvalid = true;
             fildMessage.innerHTML = 'El telèfon ha de contenir només números.';
         }
     }
-    if (fild.value && typeExtraValidate === 'onlyCharts') {
-        if (parseInt(fild.value)) {
+    if (fild.value && typeExtraValidate === 'name') {
+        let expression = /^[a-zA-ZÀ-ÿ\s]{1,20}$/;
+        if (!expression.test(fild.value)) {
             isInvalid = true;
             fildMessage.innerHTML = 'El nom i cognoms han de contenir només lletres.';
         }
     }
     if (fild.value && typeExtraValidate === 'password') {
-        let hasNumber = false;
-        let hasChart = false;
-        fild.value.split('').forEach(element => {
-            if (parseInt(element)) {
-                hasNumber = true;
-            } else {
-                hasChart = true;
-            }
-        });
-        if (!hasNumber || !hasChart) {
+        let expression = /^.{3,12}$/;
+        if (!expression.test(fild.value)) {
             isInvalid = true;
             fildMessage.innerHTML = "La contrasenya ha d'incloure números i lletres.";
         }
     }
     if (fild.value && typeExtraValidate === 'email') {
-        if (!fild.value.includes('@') || !fild.value.includes('.')) {
+        let expression = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        if (!expression.test(fild.value)) {
             isInvalid = true;
             fildMessage.innerHTML = "L'email ha de tenir format d'email.";
         }
